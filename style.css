@@ -1,0 +1,46 @@
+#times-table {
+	font-size: 30pt;
+}
+input {
+	font-size: 30pt;
+}
+body {
+	background: url(фон.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	height: 97vh;
+	color: white;
+}
+th, td {
+	border: 1px black solid;
+	text-align: center;
+}
+table {
+	border-collapse: collapse;
+	background: white;
+}
+caption {
+	color: white;
+}
+.dark_blue {
+	background: #0e5fab;
+	color: white;
+}
+.table_3 {
+	background: #a8de7e;
+	width: 350px;
+	height: 350px;
+}
+td {
+	color: black;
+}
+#× {
+	color: black;
+	background: #54acff;
+}
+.timer {
+	text-align: right;
+}
+.black {
+	color: black;
+}

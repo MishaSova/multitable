@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Тренажёр для запоминания таблицы умножения</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+	<script type="text/javascript">
+
+		var x, y;
+		var minute = 0, second = 0;
+
+		$(document).ready(function () {
+			reset();
+			$('#timer').text(minute + ':' + second);
+			setTimeout(onTime, 1000);
+		});
+
+		function onTime() {
+			if (second < 59) {
+				second ++;
+			} else {
+				minute ++;
+				second = 0;
+			}
+			
+			$('#timer').text(minute + ':' + second);
+			setTimeout(onTime, 1000);
+		}
+
+	    function resetTable() {
+	    	$('table tr td').css("background-color", "#a8de7e");
+			for (var i = 1; i < 9; i ++) {
+				$('table tr').eq(i).find('td').eq(i-1).css("background-color", "#54acff");
+			}
+			$('table').hide();
+	    }
+
+	    function reset() {
+	    	resetTable();
+	    	var a = Math.floor(Math.random() * 8) + 2;
+			var b = Math.floor(Math.random() * 8) + 2;
+			x = Math.min(a, b);
+			y = Math.max(a, b);
+			$('#digit1').text(x);
+			$('#digit2').text(y);
+			$('input').val("");
+			$('input').focus();
+	    }
+
+	    function test(z) {
+	    	$('table').show();
+	    	var color;
+	    	if (x * y == z) {
+	    		color = "green";
+	    		setTimeout(reset, 3000);
+	    	} else {
+	    		color = "red";
+	    	}
+	    	$('table tr').eq(y-1).find('td').eq(x-2).css("background-color", color);
+	    }
+
+	    
+
+	</script>
+</head>
+<body>
+	<h1 class="black">Тренажёр для запоминания таблицы умножения</h1>
+	<div id="times-table" class="black">
+		<span id="digit1">_</span> × <span id="digit2">_</span> = <input type="text" size="9" onkeypress="if (event.keyCode == 13) { test(this.value) }" />
+	</div>
+	<br>
+	<table class="table_3">
+		<caption>таблица умножения</caption>
+		<thead>
+			<tr>
+				<th id="×">×</th>
+				<th class="dark_blue">2</th>
+				<th class="dark_blue">3</th>
+				<th class="dark_blue">4</th>
+				<th class="dark_blue">5</th>
+				<th class="dark_blue">6</th>
+				<th class="dark_blue">7</th>
+				<th class="dark_blue">8</th>
+				<th class="dark_blue">9</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<th class="dark_blue">2</th>
+				<td>4</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th class="dark_blue">3</th>
+				<td>6</td>
+				<td>9</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th class="dark_blue">4</th>
+				<td>8</td>
+				<td>12</td>
+				<td>16</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th class="dark_blue">5</th>
+				<td>10</td>
+				<td>15</td>
+				<td>20</td>
+				<td>25</td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th class="dark_blue">6</th>
+				<td>12</td>
+				<td>18</td>
+				<td>24</td>
+				<td>30</td>
+				<td>36</td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th class="dark_blue">7</th>
+				<td>14</td>
+				<td>21</td>
+				<td>28</td>
+				<td>35</td>
+				<td>42</td>
+				<td>49</td>
+				<td></td>
+				<td></td>
+			</tr>
+			<tr>
+				<th class="dark_blue">8</th>
+				<td>16</td>
+				<td>24</td>
+				<td>32</td>
+				<td>40</td>
+				<td>48</td>
+				<td>56</td>
+				<td>64</td>
+				<td></td>
+			</tr>
+			<tr>
+				<th class="dark_blue">9</th>
+				<td>18</td>
+				<td>27</td>
+				<td>36</td>
+				<td>45</td>
+				<td>54</td>
+				<td>63</td>
+				<td>72</td>
+				<td>81</td>
+			</tr>
+		</tbody>
+	</table>
+	<h2 class="timer black">таймер</h2>
+	<p id="timer" class="timer black"></p>
+</body>
+</html>
